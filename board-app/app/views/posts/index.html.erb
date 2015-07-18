@@ -1,0 +1,35 @@
+<h1>Posts</h1>
+<div class="row">
+  <div class="span6 offset3">
+	<% if @posts.any? %>
+		<%= will_paginate @posts, previous_label: '前へ', next_label: '次へ'%>
+
+		<h3> 【<%= @posts.count %>】スレタイ</h3>
+		<ol class="posts">
+			<%= render @posts %>
+		</ol>
+
+		<%= will_paginate @posts, previous_label: '前へ', next_label: '次へ'%>
+	<% end %>
+
+	<%= form_for @post do |f| %>
+
+		<%= f.label :username %><br>
+		<%= f.text_field :username %>
+		<% if @post.errors.any? %>
+		<%= @post.errors.messages[:username][0] %>
+		<% end %>
+
+		<%= f.label :email %><br>
+		<%= f.text_field :email %>
+
+		<%= f.label :comment %><br>
+		<%= f.text_field :comment %>
+		<% if @post.errors.any? %>
+		<%= @post.errors.messages[:comment][0] %>
+		<% end %>
+
+		<%= f.submit %>
+	<% end %>
+  </div>
+</div>
