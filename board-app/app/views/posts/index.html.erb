@@ -24,7 +24,7 @@
 		<%= f.text_field :email %>
 
 		<%= f.label :comment %><br>
-		<%= f.text_field :comment %>
+		<%= f.text_area :comment, :size => "10x5" %>
 		<% if @post.errors.any? %>
 		<%= @post.errors.messages[:comment][0] %>
 		<% end %>
